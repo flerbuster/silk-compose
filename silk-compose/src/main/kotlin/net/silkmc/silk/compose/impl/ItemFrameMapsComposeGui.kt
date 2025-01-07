@@ -13,6 +13,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.protocol.game.*
+import net.minecraft.server.level.ServerEntity
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.entity.decoration.GlowItemFrame
@@ -187,7 +188,8 @@ class ItemFrameMapsComposeGui(
                 // spawn the fake item frame
                 val itemFrame = GlowItemFrame(player.level(), framePos, guiDirection)
                 itemFrame.isInvisible = true
-                connection.send(itemFrame.addEntityPacket)
+                val playerServerEntity = ServerEntity(player.serverLevel(), player, 0, true) { }
+                connection.send(itemFrame.getAddEntityPacket(playerServerEntity))
                 entityIds.add(itemFrame.id)
 
                 // put the map in the item frame

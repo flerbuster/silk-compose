@@ -22,7 +22,8 @@ import kotlin.io.path.isDirectory
 import kotlin.io.path.pathString
 
 object AssetsLoader {
-    private val assetsStorage = (Silk.currentServer?.serverDirectory ?: File(".")).resolve("server-assets/")
+    private val assetStorageParentPath =  (Silk.currentServer?.serverDirectory ?: File(".").toPath())
+    private val assetsStorage = assetStorageParentPath.resolve("server-assets/").toFile()
     private val assetsPath = assetsStorage.toPath().resolve("assets")
 
     private val loadedAssets = CompletableDeferred<Boolean>()

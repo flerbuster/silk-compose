@@ -1,5 +1,5 @@
 val githubRepo = "SilkMC/silk-compose"
-val minecraftVersion = "1.20.6"
+val minecraftVersion = "1.21.1"
 
 object Deps {
     // https://fabricmc.net/develop/
@@ -12,7 +12,7 @@ object Deps {
 
     // https://github.com/SilkMC/silk
     object Silk {
-        val silkVersion = "1.10.5"
+        val silkVersion = "1.10.7"
         val core = "net.silkmc:silk-core:$silkVersion"
         val commands = "net.silkmc:silk-commands:$silkVersion"
     }
